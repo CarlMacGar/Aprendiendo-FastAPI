@@ -1,7 +1,7 @@
 from fastapi import FastAPI as FAPI
 
 #Importando los ficheros
-from routers import products, users, basic_auth_user, jwt_auth_user
+from routers import products, users, basic_auth_user, jwt_auth_user, users_mongo
 
 #Importar la imágen
 from fastapi.staticfiles import StaticFiles #Con esto traemos los archivos estáticos
@@ -13,6 +13,7 @@ app.include_router(products.router)
 app.include_router(users.router)
 app.include_router(basic_auth_user.router)
 app.include_router(jwt_auth_user.router)
+app.include_router(users_mongo.router)
 #Aquí el valor que importa es el de directory como parámetro de StaticFiles, pues ese si es para el recurso.
 app.mount('/static', StaticFiles(directory='static'), name='static') #Esto es para la imágen o cualquier otra cosa (Montar) 
 
@@ -39,3 +40,9 @@ async def root():
 )
 async def si():
     return {"message": "Si"}
+
+"""
+Ahora para lo de la base de datos, vamos a usar mongo
+Para instalarlo: pip install pymongo
+"""
+

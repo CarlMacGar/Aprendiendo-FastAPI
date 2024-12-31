@@ -1,3 +1,5 @@
+"""Simulación de un CRUD de usuarios con FastAPI (No se usa base de datos)"""
+
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
